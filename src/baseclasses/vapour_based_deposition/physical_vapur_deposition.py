@@ -40,6 +40,13 @@ class PVDProcess(ArchiveSection):
         repeats=True,
     )
 
+    target_unique_id = Quantity(
+        type=str,
+        shape=['*'],
+        description='Internal laboratory unique identifier for each PVD target material.',
+        a_eln=dict(component='StringEditQuantity'),
+    )
+
     power = Quantity(
         links=[
             'http://purl.obolibrary.org/obo/PATO_0001024',

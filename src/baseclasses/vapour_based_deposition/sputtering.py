@@ -38,6 +38,18 @@ class SputteringProcess(ArchiveSection):
 
     gas_2 = SubSection(section_def=PubChemPureSubstanceSectionCustom)
 
+    target_chemical_id = Quantity(
+        type=str,
+        description='Supplier-side chemical identifier for the sputter target material.',
+        a_eln=dict(component='StringEditQuantity'),
+    )
+
+    target_unique_id = Quantity(
+        type=str,
+        description='Internal laboratory unique identifier for the sputter target material.',
+        a_eln=dict(component='StringEditQuantity'),
+    )
+
     thickness = Quantity(
         links=['http://purl.obolibrary.org/obo/PATO_0000915'],
         type=np.dtype(np.float64),

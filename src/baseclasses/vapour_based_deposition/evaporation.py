@@ -38,6 +38,12 @@ class EvaporationSources(ArchiveSection):
         section_def=PubChemPureSubstanceSectionCustom,
     )
 
+    unique_id = Quantity(
+        type=str,
+        description='Internal laboratory unique identifier for the evaporation source material.',
+        a_eln=dict(component='StringEditQuantity'),
+    )
+
     sources = Quantity(
         type=str,
         a_eln=dict(
@@ -115,6 +121,12 @@ class Evaporation(ArchiveSection):
     chemical_2 = SubSection(
         links=['http://purl.obolibrary.org/obo/RO_0000057'],
         section_def=PubChemPureSubstanceSectionCustom,
+    )
+
+    unique_id = Quantity(
+        type=str,
+        description='Internal laboratory unique identifier for the evaporation source material.',
+        a_eln=dict(component='StringEditQuantity'),
     )
 
     source = Quantity(

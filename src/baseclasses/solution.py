@@ -111,6 +111,12 @@ class SolutionChemical(ArchiveSection):
         a_eln=dict(component='StringEditQuantity'),
     )
 
+    unique_id = Quantity(
+        type=str,
+        description='Internal laboratory identifier / unique ID for the material used in this solution.',
+        a_eln=dict(component='StringEditQuantity'),
+    )
+
     def normalize(self, archive, logger):
         if self.chemical is not None and self.chemical.name is not None:
             if self.chemical_volume is not None:

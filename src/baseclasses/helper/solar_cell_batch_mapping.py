@@ -420,6 +420,7 @@ def map_solutions(data):
                 ),
                 amount_relative=get_value(data, f'{solvent} relative amount', None),
                 chemical_id=get_value(data, f'{solvent} chemical ID', None, False),
+                unique_id=get_value(data, [f'{solvent} unique ID', f'{solvent} unique id'], None, False),
             ),
         )
     for solute in sorted(set(solutes)):
@@ -453,6 +454,7 @@ def map_solutions(data):
                 ),
                 amount_relative=get_value(data, f'{solute} relative amount', None),
                 chemical_id=get_value(data, f'{solute} chemical ID', None, False),
+                unique_id=get_value(data, [f'{solute} unique ID', f'{solute} unique id'], None, False),
             ),
         )
     for additive in sorted(set(additives)):
@@ -484,6 +486,7 @@ def map_solutions(data):
                 ),
                 amount_relative=get_value(data, f'{additive} relative amount', None),
                 chemical_id=get_value(data, f'{additive} chemical ID', None, False),
+                unique_id=get_value(data, [f'{additive} unique ID', f'{additive} unique id'], None, False),
             )
         )
 
@@ -1511,6 +1514,28 @@ def map_evaporation(
         evaporation.chemical_2 = PubChemPureSubstanceSectionCustom(
             name=get_value(data, f'Material name{mat}', None, False), load_data=False
         )
+        evaporation.chemical_id = get_value(
+            data,
+            [
+                f'Material name{mat} chemical ID',
+                f'Material name{mat} chemical id',
+                f'Material name chemical ID',
+                f'Material name chemical id',
+            ],
+            None,
+            False,
+        )
+        evaporation.unique_id = get_value(
+            data,
+            [
+                f'Material name{mat} unique ID',
+                f'Material name{mat} unique id',
+                'Material name unique ID',
+                'Material name unique id',
+            ],
+            None,
+            False,
+        )
         evaporations.append(evaporation)
 
     organic_value = get_value(data, 'Organic', '', False).lower()
@@ -1578,6 +1603,12 @@ def map_sputtering(i, j, lab_ids, data, upload_id, sputter_class):
         ),
         gas_2=PubChemPureSubstanceSectionCustom(
             name=get_value(data, 'Gas', None, False), load_data=False
+        ),
+        target_unique_id=get_value(
+            data,
+            ['Material name unique ID', 'Material name unique id'],
+            None,
+            False,
         ),
     )
     archive.processes = [process]
