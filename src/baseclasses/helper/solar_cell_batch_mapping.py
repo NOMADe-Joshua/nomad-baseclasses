@@ -1710,7 +1710,6 @@ def map_close_space_sublimation(i, j, lab_ids, data, upload_id, css_class):
             ['Process pressure [mbar]', 'Process pressure [bar]'],
             None,
             unit=['mbar', 'bar'],
-            factor=[1, 1000],
         ),
         chemical_2=source_material_mixture[0].source_material
         if source_material_mixture
